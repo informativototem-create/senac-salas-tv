@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapa de Sala — Painel</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+
+<body class="min-h-screen bg-slate-50 text-slate-900">
+  <header class="sticky top-0 z-10 bg-white/80 backdrop-blur border-b">
+    <div class="mx-auto max-w-6xl px-4 py-4 flex flex-col gap-3">
+      <div class="flex items-center justify-between gap-3">
+        <div>
+          <h1 class="text-xl font-semibold">Mapa de Sala</h1>
+          <p class="text-sm text-slate-500" id="lastUpdated">Carregando…</p>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button id="btnRefresh" class="px-3 py-2 rounded-xl border bg-white hover:bg-slate-50 text-sm">
+            Atualizar
+          </button>
+          <button id="btnTV" class="px-3 py-2 rounded-xl border bg-white hover:bg-slate-50 text-sm">
+            Modo TV
+          </button>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row gap-3">
+        <input id="q" class="w-full md:flex-1 px-4 py-3 rounded-2xl border bg-white"
+               placeholder="Buscar por sala, curso, docente, observação…" />
+
+        <select id="filterStatus" class="w-full md:w-56 px-4 py-3 rounded-2xl border bg-white">
+          <option value="">Status (todos)</option>
+        </select>
+
+        <select id="filterLocal" class="w-full md:w-56 px-4 py-3 rounded-2xl border bg-white">
+          <option value="">Local/Bloco (todos)</option>
+        </select>
+      </div>
+
+      <div class="flex flex-wrap gap-2" id="counters"></div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-4 py-6">
+    <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+
+    <div id="empty" class="hidden mt-10 text-center text-slate-500">
+      Nenhum resultado com os filtros atuais.
+    </div>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
